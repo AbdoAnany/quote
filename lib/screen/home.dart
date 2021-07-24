@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
+import 'package:quote/item/quotel_card.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:quote/models/dbHelper.dart';
 import '../item/FadeAnimation.dart';
@@ -85,7 +86,7 @@ class _HomeState extends State<Home> {
                     return FadeAnimation(
                       fadeDirection: FadeDirection.bottom,
                       delay: 2 + index / 5,
-                      child: QuoteCard(item),
+                      child: QuoteCard(productItem: item,),
                     );
                   });
             }
@@ -116,58 +117,5 @@ class _HomeState extends State<Home> {
     ));
   }
 
-  Widget QuoteCard(ProductItem productItem) {
-    return GestureDetector(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => PageDescription(productItem)),
-      ),
-      child: Container(
-          padding: EdgeInsets.all(20),
-          margin: EdgeInsets.only(left: 12, right: 12, bottom: 20),
-          height: 210,
-          width: 400,
-          decoration: BoxDecoration(
-              color: Color(productItem.color),
-              image: DecorationImage(
-                  image: AssetImage(
-                    productItem.image,
-                  ),
-                  fit: BoxFit.fill,
-                  alignment: Alignment.center),
-              boxShadow: [BoxShadow(offset: Offset(10, 10), blurRadius: 10)],
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          child: Stack(
-            children: [
-              Align(
-                alignment: Alignment.topRight,
-                child: IconButton(
-                    icon: Icon(
-                      Icons.close,
-                      size: 20,
-                      color: Colors.black,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        dbHelper.deleteDateItem(productItem.id);
-                      });
-                    }),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Text(
-                  productItem.title,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontFamily: 'Adine',
-                      letterSpacing: 8,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 60,
-                      color: Color(productItem.font_color)),
-                ),
-              )
-            ],
-          )),
-    );
-  }
+
 }
