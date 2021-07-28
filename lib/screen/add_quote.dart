@@ -93,7 +93,7 @@ class _AddQuoteState extends State<AddQuote> {
               Container(
                 margin: EdgeInsets.only(left: 12, right: 12, bottom: 20),
                 decoration: BoxDecoration(
-                    color: Colors.transparent,
+                    color: currentColor,
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: TextField(
                   controller: title,
@@ -133,7 +133,7 @@ class _AddQuoteState extends State<AddQuote> {
                       fontWeight: FontWeight.bold,
                       color: fontColor),
                   keyboardType: TextInputType.text,
-                  maxLines: 5,
+                  maxLines: 10,
                 ),
               ),
               Row(
