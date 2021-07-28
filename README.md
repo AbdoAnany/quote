@@ -13,7 +13,7 @@ This project Contain SplashScreen and homePage view list of Beautiful Quote you 
 
 ### Screenshots
 
-<<<<<<< HEAD
+
 <img src="screenshots/ss1.png" height="300em" /> 
 <img src="screenshots/ss2.png" height="300em" />
  <img src="screenshots/ss3.gif" height="300em" />
