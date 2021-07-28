@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:quote/models/dbHelper.dart';
+import 'package:quote/control/auth_provider.dart';
 import 'package:quote/screen/home.dart';
 import '../models/product_item.dart';
 import '../provider_preferences.dart';
@@ -12,18 +12,21 @@ class QuoteCard extends StatelessWidget {
   QuoteCard({
     required this.productItem,
   });
- late DbHelper dbHelper;
+  var pro = AuthProvider();
 
   @override
   Widget build(BuildContext context) {
-    dbHelper = DbHelper();
     Size _size = MediaQuery.of(context).size;
     return Consumer(
       builder: (BuildContext context, watch, _) => GestureDetector(
-        onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => PageDescription(productItem)),
-        ),
+
+        onTap: () {
+          AuthProvider().productItemSet(productItem);
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => PageDescription()),
+    );
+    },
         child: Container(
             padding: EdgeInsets.all(20),
             margin: EdgeInsets.only(left: 12, right: 12, bottom: 20),
@@ -32,7 +35,7 @@ class QuoteCard extends StatelessWidget {
             decoration: BoxDecoration(
                 color: Color(productItem.color),
                 image: DecorationImage(
-                    image: AssetImage(
+                    image: NetworkImage(
                       productItem.image,
                     ),
                     fit: BoxFit.fill,
@@ -50,9 +53,7 @@ class QuoteCard extends StatelessWidget {
                         color: Colors.black,
                       ),
                       onPressed: () {
-
-                        dbHelper.deleteDateItem(productItem.id);
-
+                        pro.deleteDateItem(productItem.id);
                       }),
                 ),
                 Align(

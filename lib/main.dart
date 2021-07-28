@@ -1,14 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'provider_preferences.dart';
 import 'screen/splash_screen.dart';
-
+//import 'package:baseflow_plugin_template/baseflow_plugin_template.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Firebase.initializeApp();
   //MobileAds.instance.initialize();
+
+  // runApp(BaseflowPluginExample(
+  //     pluginName: 'Permission Handler',
+  //     githubURL: 'https://github.com/Baseflow/flutter-permission-handler',
+  //     pubDevURL: 'https://pub.dev/packages/permission_handler',
+  //     pages: [MyAppProviderSet()]));
   runApp(MyAppProviderSet());
 }
 

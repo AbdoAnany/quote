@@ -2,21 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProductItem {
- late String image, title, anime, type, description;
- late int color, font_color;
- late String data;
- late int saved;
- late int? amount, id;
+  late String image, title, anime, type, description;
+  late int color, font_color;
+  late String data;
+  late int saved;
+  late int? amount, id;
   ProductItem.a({
-     this.id,
+    this.id,
     required this.data,
     required this.saved,
-    required  this.font_color,
-    required  this.description,
-    required  this.type,
-    required  this.image,
-    required  this.color,
-    required   this.title,
+    required this.font_color,
+    required this.description,
+    required this.type,
+    required this.image,
+    required this.color,
+    required this.title,
   });
 
   ProductItem(dynamic obj) {

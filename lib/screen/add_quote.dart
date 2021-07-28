@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:quote/models/dbHelper.dart';
+import 'package:quote/control/auth_provider.dart';
 import 'package:quote/models/product_item.dart';
 
 class AddQuote extends StatefulWidget {
@@ -16,9 +16,10 @@ class _AddQuoteState extends State<AddQuote> {
   Color currentColor = Color(0xffffffff);
   Color fontColor = Color(0xff000000);
   int count = 0;
-  late  File filepicker;
-  late DbHelper dbHelper;
+  late File filepicker;
   late ProductItem productItem;
+  var pro = AuthProvider();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -37,7 +38,7 @@ class _AddQuoteState extends State<AddQuote> {
 
   void counter(x) {
     setState(() {
-      if (x == '+' && count < 12)
+      if (x == '+' && count < borderList.length - 1)
         count = count + 1;
       else if (x == '-' && count > 0) count = count - 1;
     });
@@ -45,9 +46,9 @@ class _AddQuoteState extends State<AddQuote> {
 
   @override
   Widget build(BuildContext context) {
-    dbHelper = DbHelper();
-    return Scaffold(
-      backgroundColor: Colors.white60,
+    return SafeArea(
+        child: Scaffold(
+      //   backgroundColor: Colors.white60,
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
@@ -117,7 +118,7 @@ class _AddQuoteState extends State<AddQuote> {
                 decoration: BoxDecoration(
                     color: currentColor,
                     image: DecorationImage(
-                        image: AssetImage("assets/s$count.png"),
+                        image: NetworkImage(borderList[count]),
                         fit: BoxFit.fill,
                         alignment: Alignment.center),
                     boxShadow: [
@@ -176,20 +177,18 @@ class _AddQuoteState extends State<AddQuote> {
                 child: TextButton(
                   child: const Text(
                     'Save',
-                    style: TextStyle(color: Colors.white60, fontSize: 20),
+                    style: TextStyle(color: Colors.white, fontSize: 20),
                   ),
                   onPressed: () {
                     if (title.text.isEmpty || description.text.isEmpty) {
-                        ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(
-                              duration: Duration(milliseconds: 3000),
-                              backgroundColor: Colors.black,
-                              content: Text(
-                                'Add Author and Quote',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
-                              )));
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          duration: Duration(milliseconds: 3000),
+                          backgroundColor: Colors.black,
+                          content: Text(
+                            'Add Author and Quote',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          )));
                     }
 
                     productItem = ProductItem.a(
@@ -200,9 +199,10 @@ class _AddQuoteState extends State<AddQuote> {
                         font_color: fontColor.value,
                         type: 'sad',
                         saved: 0,
-                        image: "assets/s$count.png");
+                        image: borderList[count]);
 
-                    dbHelper.addItem(productItem);
+                    pro.addItem(productItem);
+
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         duration: Duration(milliseconds: 3000),
                         backgroundColor: Colors.black,
@@ -218,7 +218,7 @@ class _AddQuoteState extends State<AddQuote> {
           ),
         ),
       ),
-    );
+    ));
   }
 
   fontColors() {
