@@ -15,4 +15,12 @@ For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-![Preview](/log.png)
+### Screenshots
+
+<img src="screenshots/ss1.png" height="300em" /> 
+<img src="screenshots/ss2.png" height="300em" />
+ <img src="screenshots/ss3.gif" height="300em" />
+  <img src="screenshots/ss4.png" height="300em" />
+   <img src="screenshots/ss5.png" height="300em" /> 
+   <img src="screenshots/ss6.png" height="300em" />
+ 

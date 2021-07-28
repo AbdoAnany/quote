@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text(
             'Quotes',
             style: TextStyle(
-                fontSize: 50, color: Colors.white, fontFamily: 'Adine'),
+                fontSize: 100, color: Colors.white, fontFamily: 'Adine'),
           ),
           onPressed: () {
             Navigator.of(context)
