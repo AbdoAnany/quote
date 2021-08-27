@@ -1,4 +1,4 @@
-# Quote
+#Quote
 
 This is Flutter project help you to make Beautiful Quote and share with your friends.
 
@@ -10,7 +10,21 @@ This project Contain SplashScreen and homePage view list of Beautiful Quote you 
  select border using arrow you have (more than 10 border)  and font or background color if you end you can save it
  you can go bCK TO HomeScreen and you will find it click her and you can see it and download it in you dives to Share
   With your Friends .
-
+  
+## Packages Used
+```
+ permission_handler: ^8.1.4+2
+ flutter_riverpod:
+ image_gallery_saver:
+ google_mobile_ads: ^0.13.0
+ simple_animations: ^3.1.1
+ flutter_colorpicker: ^0.4.0
+ sqflite:
+ firebase_core:
+ firebase_storage:
+ cloud_firestore:
+ 
+````
 ### Screenshots
 
 
